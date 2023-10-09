@@ -11,7 +11,7 @@
 和任何机器学习问题一样，视频字幕任务可以被表述为：从数据集$D$中选取一组$(xs,ys)$，其中$xs$为图像集或者序列$xs=xs_1,xs_2,...,xs_n$，$ys$是一个单词序列，$ys=(w_1,w_2,...w_m)$用来描述$xs$的内容，根据相应的图像序列$𝑥𝑠$，找出描述能力最高的概率$ys$，在数据集$D$中所有的$(xs,ys)$对儿。
 
 # 二、架构设计
-<img src="D:\workspace\typora\VideoCaptioning\Review\imgs\image-20230831141136850.png" alt="image-20230831141136850" style="zoom:80%; align=center;"/>
+<img src="./imgs/image-20230831141136850.png" alt="image-20230831141136850" style="zoom:80%; align=center;"/>
 <center>图1. 视频字幕任务典型解决方案的概述---视频由encoder提取特征，视觉特征采用不同的技术，如CNN、C3D、音频、光流、特征图、目标检测或注意力机制；之后是语言信息，通过LSTM、GRU或Transformer对这些特征进行解码，生成字幕。</center>
 
 典型架构是**encoder-decoder**，如图1所示为示例。**encoder提取视频特征**；然后，**decoder将这些属性转换成文本以生成描述**。采用不同的技术来获取特征。其中最流行的是二维和三维卷积神经网络(CNN)；同时，对时间和空间特征应用了注意机制。
@@ -50,7 +50,7 @@ Encoder通常使用带有二维核的CNN来提取图像特征，但有些架构�
 
 在第二阶段，解码器通常使用诸如**双向、分层的RNN、LSTM或GRU**等。在这种架构中，字幕每次生成一个单词，这种序列化会导致训练过程缓慢。这些RNN的另一个问题是所谓的渐变消失问题，即来自编码器的特征很容易从第一个生成的单词中获得，但随着标题长度的增加，一些信息可能会丢失。**Transformer**体系结构可以看作是这些问题的答案，最近一些较新的模型已经使用了它。
 
-<img src="D:\workspace\typora\VideoCaptioning\Review\imgs\image-20230831144143759.png" alt="image-20230831144143759" style="zoom:80%;" />
+<img src="./imgs/image-20230831144143759.png" alt="image-20230831144143759" style="zoom:80%;" />
 
 <center>图2. Transformer的架构</center>
 
@@ -58,7 +58,7 @@ Encoder通常使用带有二维核的CNN来提取图像特征，但有些架构�
 
 <center>表1. 加粗的文本数据集对应于那些最常用的</center>
 
-<img src="D:\workspace\typora\VideoCaptioning\Review\imgs\image-20230831144358950.png" alt="image-20230831144358950" style="zoom:80%;" />
+<img src="./imgs/image-20230831144358950.png" alt="image-20230831144358950" style="zoom:80%;" />
 
 |                   数据集名称                    |                             链接                             |
 | :---------------------------------------------: | :----------------------------------------------------------: |
@@ -79,7 +79,7 @@ Encoder通常使用带有二维核的CNN来提取图像特征，但有些架构�
 
 使用最多的数据集是**MSVD和MSR-VTT**，这可能是因为视频和字幕的多样性和多样性。
 
-<img src="D:\workspace\typora\VideoCaptioning\Review\imgs\image-20230831145803007.png" alt="image-20230831145803007" style="zoom: 80%;" />
+<img src="./imgs/image-20230831145803007.png" alt="image-20230831145803007" style="zoom: 80%;" />
 
 <center>图3. 每个数据集的引用数量</center>
 
@@ -208,13 +208,13 @@ $$
 
 ### 4.1.3 实例
 
-![image-20230831165542098](D:\workspace\typora\VideoCaptioning\Review\imgs\image-20230831165542098.png)
+![image-20230831165542098](./imgs/image-20230831165542098.png)
 
-![image-20230831165740284](D:\workspace\typora\VideoCaptioning\Review\imgs\image-20230831165740284.png)
+![image-20230831165740284](./imgs/image-20230831165740284.png)
 
-![image-20230831165759450](D:\workspace\typora\VideoCaptioning\Review\imgs\image-20230831165759450.png)
+![image-20230831165759450](./imgs/image-20230831165759450.png)
 
-![image-20230831165813689](D:\workspace\typora\VideoCaptioning\Review\imgs\image-20230831165813689.png)
+![image-20230831165813689](./imgs/image-20230831165813689.png)
 
 > 计算累积的BLEU：指的是为各个gram对应的权重加权，来计算得到一个加权几何平均，需要注意BLEU-4并不是只看4-gram的情况，而是计算从1-gram到4-gram的累积分数，加权策略为1-gram、2-gram、3-gram、4-gram的权重各占25%
 
@@ -636,15 +636,15 @@ $$
 
 首先，按照一个简单的分析方案计算所有性能指标的使用频率。结果，下图显示了每个报告的指标的使用百分比。这里可以看出，使用最多的是==$\text{METEOR}$(24.8%)==，其次是==$\text{BLEU-4}$(22%)和$\text{CIDEr-D}$(20.7%)==，分别排在第二位和第三位。$\text{BLEU-1, BLEU-2和BLEU-3}$的频率也差不多，约为6%，在“其他”标签中，我们加入了这些指标，但报告的结果不到两个；这些是平均-召回率(AR)、SPICE、FCE、RE和Self-BLEU。
 
-<img src="D:\workspace\typora\VideoCaptioning\Review\imgs\image-20230901142230490.png" alt="image-20230901142230490" style="zoom:67%;" />
+<img src="./imgs/image-20230901142230490.png" alt="image-20230901142230490" style="zoom:67%;" />
 
 <center>图. 在2016年和2022年，142篇论文所采用的评价指标。</center>
 
 ## 5.2 指标在各个数据集上的效果
 
-![image-20230901143254343](D:\workspace\typora\VideoCaptioning\Review\imgs\image-20230901143254343.png)
+![image-20230901143254343](./imgs/image-20230901143254343.png)
 
-![image-20230901143402803](D:\workspace\typora\VideoCaptioning\Review\imgs\image-20230901143402803.png)
+![image-20230901143402803](./imgs/image-20230901143402803.png)
 
 以上表格中排名第一的论文：
 
@@ -669,7 +669,7 @@ $$
 
 我们可以将分析分为什么时候使用特定的编码器和什么时候使用特定的解码器。在下图中，我们显示了用于在视频字幕编码器中提取特征的体系结构的分布。
 
-<center><img src="D:\workspace\typora\VideoCaptioning\Review\imgs\image-20230901144636909.png" alt="image-20230901144636909" style="zoom: 50%;" /><img src="D:\workspace\typora\VideoCaptioning\Review\imgs\image-20230901144707033.png" alt="image-20230901144707033" style="zoom: 49%;" /></center>
+<center><img src="./imgs/image-20230901144636909.png" alt="image-20230901144636909" style="zoom: 50%;" /><img src="./imgs/image-20230901144707033.png" alt="image-20230901144707033" style="zoom: 49%;" /></center>
 
 <center>左、右图为142篇Encoder和Decoder的使用情况</center>
 
