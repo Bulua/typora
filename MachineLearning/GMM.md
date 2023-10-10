@@ -8,7 +8,7 @@
 
 正如前面提到的，可以将 `GMM` 称为 概率的`KMeans`，这是因为 `KMeans `和 `GMM `的起点和训练过程是相同的。 但是，`KMeans `使用基于距离的方法，而 `GMM `使用概率方法。 `GMM `中有一个主要假设：数据集由多个高斯分布组成，换句话说，`GMM `模型可以看作是由 `K `个单高斯模型组合而成的模型,这` K `个子模型是混合模型的隐变量`(Hidden variable)`。
 
-<img src="./imgs/image-20230919153904059.png" alt="image-20230919153904059" style="zoom: 80%;" />
+![20231010114816](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/20231010114816.png)
 
 上述分布通常称为多模型分布。 每个峰代表我们数据集中不同的高斯分布或聚类。 我们肉眼可以看到这些分布，但是使用公式如何估计这些分布呢？
 
@@ -62,7 +62,7 @@ plt.grid(True)
 plt.show()
 ```
 
-<img src="./imgs/image-20230919154323680.png" alt="image-20230919154323680" style="zoom:80%;" />
+![20231010114840](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/20231010114840.png)
 
 我们上面所做的工作是：使用均值和协方差矩阵生成了随机高斯分布。 而 `GMM `要做正好与这个相反，也就是找到一个分布的**均值**和**协方差**，那么怎么做呢？
 
@@ -157,7 +157,7 @@ plt.grid(False)
 plt.show()
 ```
 
-<img src="./imgs/image-20230919160837017.png" alt="image-20230919160837017" style="zoom:80%;" />
+![<img src=".imgsimage-20230919160837017.png" alt="image-20230919160837017" style="zoom80%;" >](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/%3Cimg%20src%3D%22.imgsimage-20230919160837017.png%22%20alt%3D%22image-20230919160837017%22%20style%3D%22zoom80%25%3B%22%20%3E.png)
 
 ### 3.2 训练预测
 
