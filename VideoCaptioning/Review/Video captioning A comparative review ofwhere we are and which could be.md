@@ -1,6 +1,6 @@
 [toc]
 
-# Video captioning A comparative review ofwhere we are and which could be the route
+# Video captioning A comparative review of where we are and which could be the route
 
 # 摘要
 
