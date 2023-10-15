@@ -11,7 +11,7 @@
 $$
 \begin{aligned}
     h_{out} &= \frac{h_{in} + 2*p_{h} - k_h}{s_h} + 1    \\
-    w_{out} &= \frac{w_{in} + 2*p_{w} - k_w}{s_w} + 1    \\
+    w_{out} &= \frac{w_{in} + 2*p_{w} - k_w}{s_w} + 1
 \end{aligned}
 $$
 
