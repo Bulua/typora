@@ -39,7 +39,7 @@ $$
 \frac{\partial L(w)}{\partial w} &= \sum_{i=1}^{N} \ [y_ix_i \ - \ \frac{e^{wx_i}}{e^{wx_i}+1}x_i] \\
 (tips: 由式子&1.1可得出\frac{e^{wx_i}}{e^{wx_i}+1} = \pi(x_i))    \\
 &= \sum_{i=1}^{N} \ [y_ix_i \ - \ \pi(x_i)x_i]
-\end{aligned}
+\end{aligned}   \tag{4.1}
 $$
 
 ## 5、更新
@@ -47,6 +47,6 @@ $$
 $$
 \begin{aligned}
 w &= w_0 + \alpha\frac{\partial L(w)}{\partial w}
-&= w_0 + \alpha · x_i(y_i \ - \ \pi(x_i))
+&= w_0 + \alpha · x_i(y_i \ - \ \pi(x_i))   \tag{5.1}
 \end{aligned}
 $$
