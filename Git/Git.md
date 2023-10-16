@@ -135,4 +135,3 @@ git rm -r --cached [file_name]或者.
 
 
 ```
-
