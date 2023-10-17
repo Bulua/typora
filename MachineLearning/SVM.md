@@ -8,7 +8,7 @@
 
 **如果你已经具备这方面的知识，可以直接跳过....**
 
-![20231017103103](imgs/20231017103103.png)
+![20231017103103](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/20231017103103.png)
 
 设平面$\prod$的方程为:
 $$
