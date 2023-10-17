@@ -33,15 +33,15 @@
    \end{aligned}
    $$
 
-   其中，$w_{i,j}^t$和$d_{i,j}^t$分别表示第`t`帧点`i`和点`j`连接线的权重、距离，`n`表示关键点的数量（共14个关键点，13个人体上的关键点，1个原点），$condition \ set$代表需要算入总距离的连接线集合；如图1所示，$condition \ set$包含图中红色连接点的集合，左上角为原点位置，$d_{i,j}^t$的值为图中所有红线的距离和。
+   其中，$w_{i,j}^t$和$d_{i,j}^t$分别表示第`t`帧点`i`和点`j`连接线的权重、距离，`n`表示关键点的数量（共18个关键点，17个人体上的关键点，1个原点），$condition \ set$代表需要算入总距离的连接线集合；如图1所示，$condition \ set$包含图中大于置信度阈值点的连接点集合，左上角为原点位置，$d_{i,j}^t$的值为图中所有连接线的距离和。
 
-<center><img src="imgs/20231016162560.png" alt="20231016162560" style="zoom: 67%;" /></center>
+<img src="https://raw.githubusercontent.com/Bulua/BlogImageBed/master/20231017-110619%20-%20%E5%89%AF%E6%9C%AC.jpg" alt="20231017-110619 - 副本" style="zoom: 25%;" />
 
 <center>图 1. 人体关键点的位置与距离</center>
 
-   $s(t)、s(t+1)$分别为前、后帧的距离之和，变量$u$则表示$s(t)、s(t+1)$之间的差异，$\tanh$可将差异$u$缩放到区间`(-1, 1)`之间，使用$\tanh$函数可将所有结果缩放到`(-1, 1)`之间，更利于设计合理的阈值进行判断，还可对阈值进行调整，作为判定视频帧变化的标准。较低的阈值代表对画面人物变化的容忍度较低，较高的阈值代表对画面人物变化容忍度较高。`tanh`函数的曲线图像如图2所示：
+$s(t)、s(t+1)$分别为前、后帧的距离之和，变量$u$则表示$s(t)、s(t+1)$之间的差异，$\tanh$可将差异$u$缩放到区间`(-1, 1)`之间，使用$\tanh$函数可将所有结果缩放到`(-1, 1)`之间，更利于设计合理的阈值进行判断，还可对阈值进行调整，作为判定视频帧变化的标准。较低的阈值代表对画面人物变化的容忍度较低，较高的阈值代表对画面人物变化容忍度较高。`tanh`函数的曲线图像如图2所示：
 
-<center><img src="imgs/20231012143832.png" alt="20231012143832" style="zoom: 80%;" /></center>
+![20231017105147](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/20231017105147.png)
 
    <center>图 2. tanh函数图</center>
 
@@ -63,7 +63,7 @@
 
 |    **未加镜头切换**    |![wi9u6-03g86](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/wi9u6-03g86.gif)|
 |:-----------:|:-----------:|
-|    **增加镜头切换**    |![jti4r-arlux](imgs/jti4r-arlux.gif)![9dvb0-cy6kd](imgs/9dvb0-cy6kd.gif)![dnutf-d3ko6](imgs/dnutf-d3ko6.gif)![hb0j2-udinu](imgs/hb0j2-udinu.gif)<br/>![c0xz2-ynmc0](imgs/c0xz2-ynmc0.gif)![8ycs6-c8otf](imgs/8ycs6-c8otf.gif)![5a6tv-czm4i](imgs/5a6tv-czm4i.gif)|
+|    **增加镜头切换**    |![jti4r-arlux](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/jti4r-arlux.gif)![9dvb0-cy6kd](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/9dvb0-cy6kd.gif)![dnutf-d3ko6](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/dnutf-d3ko6.gif)![hb0j2-udinu](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/hb0j2-udinu.gif)<br/>![c0xz2-ynmc0](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/c0xz2-ynmc0.gif)![8ycs6-c8otf](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/8ycs6-c8otf.gif)![5a6tv-czm4i](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/5a6tv-czm4i.gif)|
 
 
 
