@@ -157,8 +157,6 @@ plt.grid(False)
 plt.show()
 ```
 
-![<img src=".imgsimage-20230919160837017.png" alt="image-20230919160837017" style="zoom80%;" >](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/%3Cimg%20src%3D%22.imgsimage-20230919160837017.png%22%20alt%3D%22image-20230919160837017%22%20style%3D%22zoom80%25%3B%22%20%3E.png)
-
 ### 3.2 训练预测
 
 ```python
