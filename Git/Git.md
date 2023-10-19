@@ -1,3 +1,7 @@
+[toc]
+
+
+
 ### 1、配置用户名/邮箱
 
 ```bash
@@ -132,6 +136,12 @@ touch .gitignore
 ```bash
 # 相当于撤销add操作
 git rm -r --cached [file_name]或者.
-
-
 ```
+
+### 8、git rm
+
+```bash
+git rm filename		# 删除文件
+git rm -r folder	# 删除目录和目录下的所有文件
+```
+
