@@ -27,7 +27,7 @@ ssh-keygen -t rsa -C "xxx"	//这里xxx是上面的邮箱
 
 打开github主页，在用户中点击Settings
 
-![](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/%3Cimg%20src%3D%22.imgsimage-20231009161828277.png%22%20alt%3D%22image-20231009161828277%22%20style%3D%22zoom%2080%25%3B%22%20%3E.png)
+![20231020192637](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/20231020192637.png)
 
 找到`SSH and GPG keys`
 
