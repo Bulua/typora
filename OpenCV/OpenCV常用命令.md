@@ -29,5 +29,3 @@ fps    =  int(cap.get(5))
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 writer = cv2.VideoWriter(video_save_path, fourcc, fps, (w, h))
 ```
-
-其中
