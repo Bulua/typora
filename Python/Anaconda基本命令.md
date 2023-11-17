@@ -1,6 +1,15 @@
 [toc]
 
 
+#### 0、镜像源
+```anaconda
+清华：https://pypi.tuna.tsinghua.edu.cn/simple
+阿里云：http://mirrors.aliyun.com/pypi/simple/
+中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/
+华中理工大学：http://pypi.hustunique.com/
+山东理工大学：http://pypi.sdutlinux.org/
+豆瓣：http://pypi.douban.com/simple/
+```
 
 #### 1、创建虚拟环境
 
@@ -38,6 +47,7 @@ python -m ipykernel install --user --name=myenv
 
 ```bash
 conda env list
+conda info --envs
 ```
 
 #### 6、conda搜索包的版本
@@ -83,4 +93,50 @@ conda activate env_name
 ```bash
 conda deactivate env_name
 ```
+
+#### 12、更新pip
+
+```bash
+python -m pip install --upgrade pip
+```
+
+#### 13、配置下载通道
+
+```bash
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+#### 14、清除缓存
+
+1. **清理软件包缓存：**
+
+   ```bash
+   conda clean -p
+   ```
+
+   这个命令将清理软件包缓存。
+
+2. **清理索引缓存：**
+
+   ```bash
+   conda clean -i
+   ```
+
+   这个命令将清理索引缓存。
+
+3. **清理锁文件：**
+
+   ```bash
+   conda clean -l
+   ```
+
+   这个命令将清理`conda`的锁定文件。
+
+4. **清理所有缓存：**
+
+   ```bash
+   conda clean --all
+   ```
+
+   这个命令将清理所有软件包、索引和锁文件缓存。
 

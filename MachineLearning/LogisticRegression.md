@@ -11,8 +11,6 @@ $$
 P(Y=0|x) = \frac{1}{e^{wx}+1} = 1 - \pi(x)  \\ \tag{1.2}
 $$
 
-
-
 ![微信截图_20231016205213](https://raw.githubusercontent.com/Bulua/BlogImageBed/master/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20231016205213.png)
 
 ## 2、似然函数
