@@ -952,3 +952,9 @@ public void function() {
 }
 ```
 
+## 5、项目启动
+
+### 5.1 Mysql
+
+### 5.2 Nacos
+

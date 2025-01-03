@@ -2,6 +2,40 @@
 
 
 
+# nodejs安装
+
+## 1、安装命令
+
+```bash
+sudo apt update
+
+sudo apt install -y curl
+
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+
+sudo apt install nodejs -y
+```
+
+## 2、验证是否安装成功
+
+```bash
+node -v
+
+npm -v
+```
+
+## 3、安装pnpm
+
+```bash
+sudo npm install -g pnpm --registry=https://registry.npmmirror.com
+```
+
+## 4、验证pnpm
+
+```bash
+pnpm -v
+```
+
 # 本地部署Dify的Web项目
 
 ## 1. 更改docker-compose.yaml
@@ -343,3 +377,40 @@ class IpToAdressConvert(BuiltinTool):
             print(f"An error occurred: {e}")
 ```
 
+# Dify项目的web页面修改
+
+## 1、增加配置到docker-compose.yaml
+
+找到`web`服务，添加`build`配置。`context`填写`docker-compose.yaml`相对于`web`文件夹的路径，`dockerfile`填写`web`文件夹下的`Dockerfile`路径（这里填写`Dockerfile`是因为它会自动寻找`context`目录下的`Dockerfile`文件）。
+
+```bash
+web:
+    build:
+      context: ../web
+      dockerfile: Dockerfile
+    image: langgenius/dify-web:0.14.2
+    restart: always
+    environment:
+      CONSOLE_API_URL: ${CONSOLE_API_URL:-}
+      APP_API_URL: ${APP_API_URL:-}
+      SENTRY_DSN: ${WEB_SENTRY_DSN:-}
+      NEXT_TELEMETRY_DISABLED: ${NEXT_TELEMETRY_DISABLED:-0}
+      TEXT_GENERATION_TIMEOUT_MS: ${TEXT_GENERATION_TIMEOUT_MS:-60000}
+      CSP_WHITELIST: ${CSP_WHITELIST:-}
+```
+
+## 2、问题
+
+找到`web`文件夹下的`Dockerfile`，注释掉下面这一行，否则使用`yarn install`会失败。
+
+```bash
+# COPY yarn.lock .
+```
+
+## 3、运行
+
+```bash
+sudo docker compose up -d --build
+```
+
+**等待编译完成后即可。**
