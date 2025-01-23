@@ -232,7 +232,28 @@ sudo docker run --name qwen2.5-14b-instruct --runtime nvidia --gpus '"device=1,2
 sudo docker run -d --name qwen2.5-14b-instruct --runtime nvidia --gpus '"device=1,2"' -v /home/ics/workspace/llm-models/qwen/Qwen2___5-14B-Instruct:/qwen/Qwen2___5-14B-Instruct -p 8001:8000 --ipc=host vllm/vllm-openai:latest --model /qwen/Qwen2___5-14B-Instruct --tensor_parallel_size 2 --served-model-name qwen2.5-14b-instruct
 ```
 
-### 2.3、Docker容器部署Embedding model
+### 2.3、Docker容器部署Qwen2.5-32B模型
+
+```bash
+sudo docker run \
+	--name qwen2.5-32b-instruct
+	--runtime nvidia \
+	--gpus '"device=0,1,2,3"' \
+	-v /home/ics/workspace/llm-models/qwen/Qwen2___5-32B-Instruct:/qwen/Qwen2___5-32B-Instruct \
+	-p 8003:8000 \
+	--ipc=host \ 
+	vllm/vllm-openai:latest \
+	--model /qwen/Qwen2___5-32B-Instruct
+	--tensor_parallel_size 4
+	--served-model-name qwen2.5-32b-instruct
+	
+	
+sudo docker run --name qwen2.5-32b-instruct --runtime nvidia --gpus '"device=0,1,2,3"' -v /home/ics/workspace/llm-models/qwen/Qwen2___5-32B-Instruct:/qwen/Qwen2___5-32B-Instruct -p 8003:8000 --ipc=host vllm/vllm-openai:latest --model /qwen/Qwen2___5-32B-Instruct --tensor_parallel_size 4 --served-model-name qwen2.5-32b-instruct
+
+sudo docker run -d --name qwen2.5-32b-instruct --runtime nvidia --gpus '"device=0,1,2,3"' -v /home/ics/workspace/llm-models/qwen/Qwen2___5-32B-Instruct:/qwen/Qwen2___5-32B-Instruct -p 8003:8000 --ipc=host vllm/vllm-openai:latest --model /qwen/Qwen2___5-32B-Instruct --tensor_parallel_size 4 --served-model-name qwen2.5-32b-instruct
+```
+
+### 2.4、Docker容器部署Embedding model
 
 #### **bge-large-zh-v1.5**
 
@@ -256,10 +277,23 @@ sudo docker run -d --name bge-large-zh-v1.5 --runtime nvidia --gpus '"device=0"'
 #### **bge-m3**
 
 ```bash
-
+sudo docker run \
+	--name bge-m3 \
+	--runtime nvidia \
+	--gpus '"device=0"' \
+	-v /home/ics/workspace/llm-models/Xorbits/bge-m3:/Xorbits/bge-m3 \
+	-p 8003:8000 \
+	--ipc=host \ 
+	vllm/vllm-openai:latest \
+	--model /Xorbits/bge-m3 \
+	--tensor_parallel_size 1 \
+	--served-model-name bge-m3
+	
+	
+sudo docker run -d --name bge-m3 --runtime nvidia --gpus '"device=0"' -v /home/ics/workspace/llm-models/Xorbits/bge-m3:/Xorbits/bge-m3 -p 8003:8000 --ipc=host vllm/vllm-openai:latest --model /Xorbits/bge-m3 --tensor_parallel_size 1 --served-model-name bge-m3
 ```
 
-### 2.4、Docker容器部署Rerank model
+### 2.5、Docker容器部署Rerank model
 
 ```bash
 sudo docker run \
@@ -273,12 +307,18 @@ sudo docker run \
 	--model /Xorbits/bge-reranker-large \
 	--tensor_parallel_size 1 \
 	--served-model-name bge-reranker-large
+
+sudo docker run 
+	--name bge-rerank-large
+	--runtime nvidia
+	--gpus '"device=0"' 
+	-p 8080:80 
+	-v $volume:/data --pull always ghcr.io/huggingface/text-embeddings-inference:1.6 --model-id $model
+
 	
 	
 sudo docker run -d --name bge-reranker-large --runtime nvidia --gpus '"device=0"' -v /home/ics/workspace/llm-models/Xorbits/bge-reranker-large:/Xorbits/bge-reranker-large -p 8003:8000 --ipc=host vllm/vllm-openai:latest --model /Xorbits/bge-reranker-large --tensor_parallel_size 1 --served-model-name bge-reranker-large
 ```
-
-
 
 ## 3、参数详解
 
